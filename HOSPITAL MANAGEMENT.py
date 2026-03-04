@@ -2,7 +2,7 @@ import pickle
 import datetime
 import os
 import math
-from prettytable import PrettyTable #python -m pip install -U prettytable
+from prettytable import PrettyTable
 
 def add_patient():
     file1=open("hospital.dat","ab")
@@ -887,3 +887,4 @@ while True:
     else:
         print(f'{"---- Thank You ----":^130}')
         break
+
