@@ -16,10 +16,10 @@ Terminal-based Hospital Management System in Python — CRUD patient records sto
 - [PrettyTable](https://pypi.org/project/prettytable/)
 
 ```bash
-pip install prettytable
+python -m pip install -U prettytable
 ```
 
-## Data Files
+## File Structure
 
 The program creates and manages the following files automatically:
 
@@ -30,3 +30,49 @@ The program creates and manages the following files automatically:
 | `print_receipt.txt`| Exported billing receipt for a patient       |
 
 ⚠️ Do not manually edit `.dat` files, they are binary pickle files.
+
+\
+**`hospital.dat`**: each record is a dictionary in the format `{ pid: [nm, gen, dob, ph, addr, reg] }`
+
+| Field      |Datatype| Description                          |
+|------------|--------|--------------------------------------|
+| `pid`      | `int`  | Patient ID                           |
+| `nm`       | `str`  | Name of patient                      |
+| `gen`      | `str`  | Gender of patient                    |
+| `dob`      | `str`  | Date of birth of patient (dd-mm-yyyy)|
+| `ph`       | `int`  | Phone number of patient              |
+| `addr`     | `str`  | Address of patient                   |
+| `reg`      | `str`  | Current date / Date of registration  |
+
+\
+**`patients.dat`**: each record is a dictionary in the format `{ pid: [<code1>, <code2>, ...] }`
+
+## Appointment Codes
+
+Appointments are stored as short 3-character codes for billing.
+
+The first character represents the department.
+| Code | Department |
+|------|------------|
+|`C xx`|Cardiology |
+|`E xx`|ENT |
+|`G xx`|General Surgery|
+|`N xx`|Neurology|
+|`P xx`|Physiotherapy|
+
+The second character represents the doctor.
+| Code  | Doctor        |
+|-------------|----------------|
+| `x 1x`        | Doctor 1  |
+| `x 2x`        | Doctor 2 |
+
+The third character represents the type of visit.
+| Code  | Visit Type        |
+|-------------|-------------------|
+| `x x1`        | Initial Checkup   |
+| `x x2`        | Follow-up Checkup |
+| `x x3`        | Post-Surgery      |
+| `x x4`        | Emergency         |
+
+\
+`0` represents the file opening fee, and is present for every patient.
